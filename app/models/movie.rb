@@ -1,3 +1,17 @@
+#    Column    |              Type              | Collation | Nullable |              Default
+# -------------+--------------------------------+-----------+----------+------------------------------------
+#  id          | bigint                         |           | not null | nextval('movies_id_seq'::regclass)
+#  user_id     | bigint                         |           | not null |
+#  title       | character varying              |           |          |
+#  description | text                           |           |          |
+#  category_id | integer                        |           |          |
+#  avg_rating  | double precision               |           |          |
+#  created_at  | timestamp(6) without time zone |           | not null |
+#  updated_at  | timestamp(6) without time zone |           | not null |
+# Indexes:
+#     "movies_pkey" PRIMARY KEY, btree (id)
+#     "index_movies_on_user_id" btree (user_id)
+
 class Movie < ApplicationRecord
   module Category
     Action = 1
