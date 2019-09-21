@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+pulp_fiction:
+  user: yasir
+  title: Pulp Fiction
+  description: Pulp fiction description, directed by Tarantino, and etc.
+  category_id: <%= Movie::Category::Action %>
+  avg_rating: 5.0
+
+reservoir_dogs:
+  user: yasir
+  title: Reservoir Dogs
+  description: Reservoir Dogs description, directed by Tarantino, and etc.
+  category_id: <%= Movie::Category::Action %>
+  avg_rating: 4.0
+
+inside_out:
+  user: yasir
+  title: Inside Out
+  description: Inside Out description, joy, sad angry and etc.
+  category_id: <%= Movie::Category::Animation %>
+  avg_rating: 3.3
+
+lion_king:
+  user: azgar
+  title: Lion King
+  description: Loin King, animation.
+  category_id: <%= Movie::Category::Animation %>
+  avg_rating: 3.3
+
+god_father:
+  user: yasir
+  title: God Father
+  description: God Father description, ultimate drama.
+  category_id: <%= Movie::Category::Animation %>
+  avg_rating: 3.7
+
+snatch:
+  user: azgar
+  title: Snatch
+  description: Snatch description, ultimate comedy.
+  category_id: <%= Movie::Category::Comedy %>
+  avg_rating: 3.7
+
+no_rating:
+  user: azgar
+  title: No Rating
+  description: No rating description, this movie has no rating.
+  avg_rating: 0.0

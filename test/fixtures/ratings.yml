@@ -1,0 +1,79 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+yasir_snatch:
+  user: yasir
+  movie: snatch
+  rating: 4
+azgar_snatch:
+  user: azgar
+  movie: snatch
+  rating: 4
+no_movie_snatch:
+  user: no_movie
+  movie: snatch
+  rating: 3
+
+yasir_pulp_fiction:
+  user: yasir
+  movie: plup_fiction
+  rating: 5
+azgar_pulp_fiction:
+  user: azgar
+  movie: plup_fiction
+  rating: 5
+no_movie_pulp_fiction:
+  user: no_movie
+  movie: plup_fiction
+  rating: 5
+
+yasir_reservoir_dogs:
+  user: yasir
+  movie: resevoir_dogs
+  rating: 5
+azgar_reservoir_dogs:
+  user: azgar
+  movie: resevoir_dogs
+  rating: 4
+no_movie_reservoir_dogs:
+  user: no_movie
+  movie: resevoir_dogs
+  rating: 3
+
+yasir_inside_out:
+  user: yasir
+  movie: inside_out
+  rating: 5
+azgar_inside_out:
+  user: azgar
+  movie: inside_out
+  rating: 3
+no_movie_inside_out:
+  user: no_movie
+  movie: inside_out
+  rating: 2
+
+yasir_lion_king:
+  user: yasir
+  movie: lion_king
+  rating: 4
+azgar_lion_king:
+  user: azgar
+  movie: lion_king
+  rating: 3
+no_movie_lion_king:
+  user: no_movie
+  movie: lion_king
+  rating: 3
+
+yasir_god_father:
+  user: yasir
+  movie: god_father
+  rating: 4
+azgar_god_father:
+  user: azgar
+  movie: god_father
+  rating: 3
+no_movie_god_father:
+  user: no_movie
+  movie: god_father
+  rating: 4

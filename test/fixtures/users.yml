@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# All passwords => BCrypt::Password.create('PassworD%1')
+ # => "$2a$12$7irMLeKBuVPXnku4fwn0IOdngiyXVXrj/lG263lJGPjhFSlR7X.fC"
+
+yasir:
+  name: yasir
+  email: yasir@risk.com
+  password_digest: $2a$12$7irMLeKBuVPXnku4fwn0IOdngiyXVXrj/lG263lJGPjhFSlR7X.fC
+
+azgar:
+  name: Azgar
+  email: azgar@risk.com
+  password_digest: $2a$12$7irMLeKBuVPXnku4fwn0IOdngiyXVXrj/lG263lJGPjhFSlR7X.fC
+
+no_movie:
+  name: No Movie
+  email: no_movie@risk.com
+  password_digest: $2a$12$7irMLeKBuVPXnku4fwn0IOdngiyXVXrj/lG263lJGPjhFSlR7X.fC
