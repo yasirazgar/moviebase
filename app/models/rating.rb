@@ -16,7 +16,10 @@ class Rating < ApplicationRecord
   belongs_to :movie
   after_save :update_movie_avg_rating
 
-  validates :rating, numericality: { greater_than: 0, less_than_or_equal_to: 5,  only_integer: true }
+  validates :rating, numericality: {
+    greater_than: 0, less_than_or_equal_to: 5,  only_integer: true }
+  validates :movie, uniqueness: {
+    scope: :user, message: I18n.t('rating.duplicate') }
 
   private
 

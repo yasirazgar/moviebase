@@ -1,18 +1,4 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-yasir_snatch:
-  user: yasir
-  movie: snatch
-  rating: 4
-azgar_snatch:
-  user: azgar
-  movie: snatch
-  rating: 4
-no_movie_snatch:
-  user: no_movie
-  movie: snatch
-  rating: 3
-
 yasir_pulp_fiction:
   user: yasir
   movie: plup_fiction
@@ -55,10 +41,6 @@ no_movie_inside_out:
 yasir_lion_king:
   user: yasir
   movie: lion_king
-  rating: 4
-azgar_lion_king:
-  user: azgar
-  movie: lion_king
   rating: 3
 no_movie_lion_king:
   user: no_movie
@@ -77,3 +59,16 @@ no_movie_god_father:
   user: no_movie
   movie: god_father
   rating: 4
+
+yasir_snatch:
+  user: yasir
+  movie: snatch
+  rating: 4
+azgar_snatch:
+  user: azgar
+  movie: snatch
+  rating: 4
+no_movie_snatch:
+  user: no_movie
+  movie: snatch
+  rating: 3

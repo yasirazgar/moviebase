@@ -39,3 +39,16 @@ en:
     create:
       success: User created successfully.
       failure: User creation failed.
+  movie:
+    create:
+      success: Movie created successfully.
+      failure: Movie creation failed.
+    update:
+      success: Movie updated successfully.
+      failure: Movie updation failed.
+    destroy:
+      success: Movie deleted successfully.
+      failure: Movie deletion failed.
+  rating:
+    rate: Rating saved successfully.
+    duplicate: Duplicate rating.

@@ -26,7 +26,7 @@ lion_king:
   title: Lion King
   description: Loin King, animation.
   category_id: <%= Movie::Category::Animation %>
-  avg_rating: 3.3
+  avg_rating: 3.0
 
 god_father:
   user: yasir
