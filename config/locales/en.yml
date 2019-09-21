@@ -30,6 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  authorization:
+    not_allowed: Not allowed
+  authentication:
+    success: Authentication successful.
+    failure: Authentication failed.
   user:
     create:
       success: User created successfully.
