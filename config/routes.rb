@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     post "signup", to: "users#create", as: "signup"
     resources :users, only: :create
 
-    resources :movies, only: [:index, :update, :create, :update, :destroy]
+    resources :movies, only: [:index, :update, :create, :update, :destroy] do
+      resources :ratings, only: [] do
+        collection do
+          patch :rate
+        end
+      end
+
+    end
   end
 end
