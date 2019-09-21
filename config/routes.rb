@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     post "login", to: "authentication#create", as: "login"
     post "signup", to: "users#create", as: "signup"
     resources :users, only: :create
+
+    resources :movies, only: [:index, :update, :create, :update, :destroy]
   end
 end
