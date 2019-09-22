@@ -1,6 +1,9 @@
 {
   "name": "moviebase",
   "private": true,
+  "engines": {
+    "node": "11.10.1"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/actioncable": "^6.0.0-alpha",
