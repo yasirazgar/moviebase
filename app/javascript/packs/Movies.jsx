@@ -6,8 +6,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { fetchMovies } from '../actions'
 import { useEffect } from 'react';
+import Table from 'react-bootstrap/Table';
+
+import { fetchMovies } from '../actions'
+
+import './Movies.scss'
 
 const Movies = ({movies, translations, fetchMovies}) => {
 
@@ -17,7 +21,7 @@ const Movies = ({movies, translations, fetchMovies}) => {
 
   const moviesRow = movies.map((movie, index) => {
     return(
-      <tr>
+      <tr key={movie[0]}>
         <td> {movie[1]} </td>
         <td> {movie[2]} </td>
         <td> {movie[5]} </td>
@@ -27,18 +31,18 @@ const Movies = ({movies, translations, fetchMovies}) => {
   })
 
   return (
-    <div>
-      <table>
+    <div className='movies-wrapper'>
+      <Table striped bordered hover size="sm">
         <thead>
           <td> {translations.title} </td>
           <td> {translations.description} </td>
           <td> {translations.category} </td>
           <td> {translations.rating} </td>
         </thead>
-        <tbody>
+        <tbody className='movie'>
           { moviesRow }
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }
