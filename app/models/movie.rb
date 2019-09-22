@@ -14,10 +14,20 @@
 
 class Movie < ApplicationRecord
   module Category
-    Action = 1
-    Drama = 2
-    Comedy = 3
-    Animation = 4
+    ACTION = 1
+    DRAMA = 2
+    COMEDY = 3
+    ANIMATION = 4
+  end
+  CATEGORY_MAPPING = {
+    Category::ACTION => 'action',
+    Category::DRAMA => 'drama',
+    Category::COMEDY => 'comedy',
+    Category::ANIMATION => 'animation'
+  }.freeze
+
+  def category
+    I18n.t("movie.category.#{CATEGORY_MAPPING[category_id]}")
   end
 
   validates :title, presence: true

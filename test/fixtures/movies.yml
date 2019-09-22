@@ -4,42 +4,42 @@ pulp_fiction:
   user: yasir
   title: Pulp Fiction
   description: Pulp fiction description, directed by Tarantino, and etc.
-  category_id: <%= Movie::Category::Action %>
+  category_id: <%= Movie::Category::ACTION %>
   avg_rating: 5.0
 
 reservoir_dogs:
   user: yasir
   title: Reservoir Dogs
   description: Reservoir Dogs description, directed by Tarantino, and etc.
-  category_id: <%= Movie::Category::Action %>
+  category_id: <%= Movie::Category::ACTION %>
   avg_rating: 4.0
 
 inside_out:
   user: yasir
   title: Inside Out
   description: Inside Out description, joy, sad angry and etc.
-  category_id: <%= Movie::Category::Animation %>
+  category_id: <%= Movie::Category::ANIMATION %>
   avg_rating: 3.3
 
 lion_king:
   user: azgar
   title: Lion King
   description: Loin King, animation.
-  category_id: <%= Movie::Category::Animation %>
+  category_id: <%= Movie::Category::ANIMATION %>
   avg_rating: 3.0
 
 god_father:
   user: yasir
   title: God Father
   description: God Father description, ultimate drama.
-  category_id: <%= Movie::Category::Animation %>
+  category_id: <%= Movie::Category::DRAMA %>
   avg_rating: 3.7
 
 snatch:
   user: azgar
   title: Snatch
   description: Snatch description, ultimate comedy.
-  category_id: <%= Movie::Category::Comedy %>
+  category_id: <%= Movie::Category::COMEDY %>
   avg_rating: 3.7
 
 no_rating:

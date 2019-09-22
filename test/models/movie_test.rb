@@ -37,4 +37,23 @@ class MovieTest < ActiveSupport::TestCase
 
     assert_equal(original, @snatch.avg_rating, "Should reset to correct avg")
   end
+
+  test "category" do
+    Movie::Category.constants.each do |category|
+      assert_equal(
+        [
+          movies(:reservoir_dogs).category,
+          movies(:god_father).category,
+          movies(:inside_out).category,
+          movies(:snatch).category
+        ],
+        [
+          I18n.t('movie.category.action'),
+          I18n.t('movie.category.drama'),
+          I18n.t('movie.category.animation'),
+          I18n.t('movie.category.comedy')
+        ],
+        "Should correctly map all the categories")
+    end
+  end
 end

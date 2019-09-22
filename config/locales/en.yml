@@ -30,6 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  movie:
+    category:
+      action: Action
+      drama: Drama
+      comedy: Comedy
+      animation: Animation
   authorization:
     not_allowed: Not allowed
   authentication:
