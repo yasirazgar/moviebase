@@ -1,5 +1,9 @@
 {
   "hello": "Hello",
   "logout": "Logout",
-  "login": "Login"
+  "login": "Login",
+  "title": "Title",
+  "description": "Description",
+  "category": "Category",
+  "rating": "Rating"
 }

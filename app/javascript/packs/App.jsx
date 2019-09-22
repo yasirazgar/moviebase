@@ -7,8 +7,12 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
+import Movies from './Movies';
+
 const App = ({translations}) => (
-  <div>{translations.hello}</div>
+  <div>
+    <Movies />
+  </div>
 )
 
 const mapStateToProps = state => {
