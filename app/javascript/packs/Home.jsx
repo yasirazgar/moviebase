@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import App from './App.jsx'
 import reducers from '../reducers'
 import { buildTranslations } from '../actions'
 import { DEFAULT_LOCALE } from './constants.js'
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 store.dispatch(buildTranslations(DEFAULT_LOCALE))
 
 const Home = props => (
