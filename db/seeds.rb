@@ -18,7 +18,12 @@ yasir, azgar, randy = User.create(
 desc = Proc.new {|movie| "Description for movie #{movie}, its director, year of release and etc."}
 pulp_fiction, inception, dark_knight = Movie.create(
   ['Pulp Fiction', 'Inception', 'Dark Knight'].map do |movie|
-    {title: movie, description: desc.call(movie), user: yasir}
+    {
+      title: movie,
+      description: desc.call(movie),
+      user: yasir,
+      category_id: Movie::Category::ACTION
+    }
   end
 )
 Rating.create(
@@ -45,7 +50,7 @@ Rating.create(
 
 avengers, marvel, pool = Movie.create(
   ['Avengers', 'Captain Marvel', 'Dead Pool'].map do |movie|
-    {title: movie, description: desc.call(movie), user: azgar}
+    {title: movie, description: desc.call(movie), user: azgar, category_id: Movie::Category::ANIMATION}
   end
 )
 Rating.create(
@@ -72,7 +77,7 @@ Rating.create(
 
 django, insomnia, interstellar = Movie.create(
   ['Django', 'Insomnia', 'Interstellar'].map do |movie|
-    {title: movie, description: desc.call(movie), user: randy}
+    {title: movie, description: desc.call(movie), user: randy, category_id: Movie::Category::COMEDY}
   end
 )
 Rating.create(
