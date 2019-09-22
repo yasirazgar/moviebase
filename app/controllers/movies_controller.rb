@@ -1,12 +1,18 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_request, only: [:index]
-  before_action :authorize_user, except: [:index, :create]
+  before_action :set_movie, only: [:update, :destroy]
+  skip_before_action :authenticate_request, only: [:index, :search]
+  before_action :authorize_user, except: [:index, :search, :create]
 
   def index
-    @movies = Movie.all
+    movies = Movie.all
 
-    render json: { movies: @movies.pluck(:title, :description) }
+    render json: movies_json(movies)
+  end
+
+  def search
+    movies = MovieSearchService.new.search(params)
+
+    render json: movies_json(movies)
   end
 
   def create
@@ -47,6 +53,14 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  def movies_json(movies)
+    json = movies.map{ |movie|
+      [movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category]
+    }
+
+    { movies: json }
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_movie
     @movie = Movie.find(params[:id])

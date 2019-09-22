@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :users, only: :create
 
     resources :movies, only: [:index, :update, :create, :update, :destroy] do
+      collection do
+        get :search
+      end
       resources :ratings, only: [] do
         collection do
           patch :rate

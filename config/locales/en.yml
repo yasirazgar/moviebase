@@ -36,16 +36,10 @@ en:
       drama: Drama
       comedy: Comedy
       animation: Animation
-  authorization:
-    not_allowed: Not allowed
-  authentication:
-    success: Authentication successful.
-    failure: Authentication failed.
-  user:
-    create:
-      success: User created successfully.
-      failure: User creation failed.
-  movie:
+    search:
+      error:
+        category: Invalid category.
+        rating: Invalid rating.
     create:
       success: Movie created successfully.
       failure: Movie creation failed.
@@ -55,6 +49,15 @@ en:
     destroy:
       success: Movie deleted successfully.
       failure: Movie deletion failed.
+  authorization:
+    not_allowed: Not allowed
+  authentication:
+    success: Authentication successful.
+    failure: Authentication failed.
+  user:
+    create:
+      success: User created successfully.
+      failure: User creation failed.
   rating:
     rate: Rating saved successfully.
     duplicate: Duplicate rating.

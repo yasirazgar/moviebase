@@ -22,15 +22,33 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
       movies(:no_rating)
     ]
     assert_equal(
-      movies.map{|movie| [movie.title, movie.description] },
+      expected_movies_response(movies),
       json_response['movies'],
       "Should return all movies")
+  end
+
+  test "search" do
+    params = {
+      category_id: Movie::Category::ACTION,
+      rating: 4,
+      term: 'dogs'
+    }
+    movie = movies(:reservoir_dogs)
+
+    get(search_movies_url(params))
+
+    assert_response :success
+
+    assert_equal(
+      expected_movies_response([movie]),
+      json_response['movies'],
+      "Should return the movie according to search terms.")
   end
 
   test "should create movie" do
     params = {
       movie: {
-        category_id: Movie::Category::Action,
+        category_id: Movie::Category::ACTION,
         title: @movie.title,
         description: 'Movie Description'
       }
@@ -54,7 +72,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
   test "update movie unauthorized_user_fails" do
     params = {
       movie: {
-        category_id: Movie::Category::Animation,
+        category_id: Movie::Category::ANIMATION,
         title: 'New title',
         description: 'New Description'
       }
@@ -67,7 +85,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
   test "should update movie" do
     params = {
       movie: {
-        category_id: Movie::Category::Animation,
+        category_id: Movie::Category::ANIMATION,
         title: 'New title',
         description: 'New Description'
       }
@@ -104,5 +122,14 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
       I18n.t('movie.destroy.success'),
       json_response['message'],
       'Should set response message.')
+  end
+
+  def expected_movies_response(movies)
+    movies.map do |movie|
+      [
+        movie.id, movie.title, movie.description,
+        movie.avg_rating, movie.category_id, movie.category
+      ]
+    end
   end
 end
