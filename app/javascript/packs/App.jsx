@@ -5,22 +5,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
-const App = props => (
-  <div>Hello {props.name}!</div>
+const App = ({translations}) => (
+  <div>{translations.hello}</div>
 )
 
-Hello.defaultProps = {
-  name: 'David'
+const mapStateToProps = state => {
+  return {
+    translations: state.translations
+  }
 }
 
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+export default connect(mapStateToProps)(App)

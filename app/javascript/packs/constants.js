@@ -1,0 +1,2 @@
+export const DEFAULT_LOCALE = 'en'
+export const BUILD_TRANSLATIONS = 'BUILD_TRANSLATIONS'
