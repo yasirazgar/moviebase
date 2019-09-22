@@ -6,11 +6,16 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
 
+    @paginator = Paginator.new(movies, params, :movies_url)
+    movies = @paginator.paginate
+
     render json: movies_json(movies)
   end
 
   def search
     movies = MovieSearchService.new.search(params)
+    @paginator = Paginator.new(movies, params, :search_movies_url)
+    movies = @paginator.paginate
 
     render json: movies_json(movies)
   end

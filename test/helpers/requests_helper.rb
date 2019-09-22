@@ -40,4 +40,14 @@ module RequestsHelper
       json_response['error']['message'],
       "Should set authorization failure message")
   end
+
+  def assert_pagination_headers(total_count, current_page=1)
+    headers = response.headers
+
+    assert_not_nil headers['Link'], 'Should set pagination links'
+    assert_equal(total_count, headers['Total'],
+      'Should set total_count')
+    assert_equal(current_page, headers['Current-Page'],
+      'Should set current_page')
+  end
 end

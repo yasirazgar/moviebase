@@ -8,23 +8,21 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get movies_url
+    get movies_url(limit: 3)
 
     assert_response :success
 
     movies = [
       movies(:pulp_fiction),
       movies(:reservoir_dogs),
-      movies(:inside_out),
-      movies(:lion_king),
-      movies(:god_father),
-      movies(:snatch),
-      movies(:no_rating)
+      movies(:inside_out)
     ]
     assert_equal(
       expected_movies_response(movies),
       json_response['movies'],
       "Should return all movies")
+
+    assert_pagination_headers(7)
   end
 
   test "search" do
@@ -43,6 +41,27 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
       expected_movies_response([movie]),
       json_response['movies'],
       "Should return the movie according to search terms.")
+
+    assert_pagination_headers(1)
+  end
+
+  test "search-only_action" do
+    params = {
+      category_id: Movie::Category::ANIMATION,
+      limit: 1
+    }
+    movie = movies(:inside_out)
+
+    get(search_movies_url(params))
+
+    assert_response :success
+
+    assert_equal(
+      expected_movies_response([movie]),
+      json_response['movies'],
+      "Should return the movies with action category with limit 1.")
+
+    assert_pagination_headers(2)
   end
 
   test "should create movie" do

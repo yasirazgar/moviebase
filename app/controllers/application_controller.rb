@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_request
+  after_action :setup_page_headers
 
   def authenticate_request
     unless current_user
@@ -15,6 +16,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def setup_page_headers
+    return unless @paginator
+
+    headers['Link'] = @paginator.header_links
+    headers['Total'] = @paginator.total_count
+    headers['Current-Page'] = @paginator.page
+  end
 
   def current_user
     @current_user ||= fetch_user_from_token
