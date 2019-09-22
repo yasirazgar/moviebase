@@ -19,6 +19,24 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/preset-env": "^7.6.0",
+    "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.9.0",
+    "redux-mock-store": "^1.5.3",
     "webpack-dev-server": "^3.8.1"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript/packs"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/javascript/__mocks__/fileMock.js",
+      "\\.(scss|css|less)$": "<rootDir>/test/javascript/__mocks__/styleMock.js"
+    }
   }
 }
