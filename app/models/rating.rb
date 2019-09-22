@@ -12,12 +12,15 @@
 #     "index_ratings_on_user_id" btree (user_id)
 
 class Rating < ApplicationRecord
+  MAX = 5
+  MIN = 1
+
   belongs_to :user
   belongs_to :movie
   after_save :update_movie_avg_rating
 
   validates :rating, numericality: {
-    greater_than: 0, less_than_or_equal_to: 5,  only_integer: true }
+    greater_than_or_equal_to: MIN, less_than_or_equal_to: MAX,  only_integer: true }
   validates :movie, uniqueness: {
     scope: :user, message: I18n.t('rating.duplicate') }
 

@@ -15,6 +15,8 @@ class RatingTest < ActiveSupport::TestCase
   test "validation_with_invalid_rating" do
     assert(!Rating.new(user: @user, movie: @lion_king, rating: -8).valid?,
       "Should not be valid if rating is not an absolute value")
+    assert(!Rating.new(user: @user, movie: @lion_king, rating: 0).valid?,
+      "Should not be valid if rating is 0")
     assert(!Rating.new(user: @user, movie: @lion_king, rating: 6).valid?,
       "Should not be valid if rating greater than 5.")
   end
