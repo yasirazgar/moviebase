@@ -4,20 +4,23 @@ class MovieTest < ActiveSupport::TestCase
   setup do
     @yasir = users(:yasir)
     @snatch = movies(:snatch)
-  end
-
-  test "validations_fails_without_rating" do
-    yasir = users(:yasir)
-
-    assert(!Movie.new(user: yasir).valid?,
-      "Should not be valid if title is missing.")
+    @required_params = {
+      user: @yasir,
+      title: 'Kill Bill',
+      category_id: Movie::Category::ACTION
+    }
   end
 
   test "gets_saved_when_all_the_attributes_are_present" do
-    yasir = users(:yasir)
-
-    assert(Movie.new(user: yasir, title: 'Kill Bill').valid?,
+    assert(Movie.new(@required_params).valid?,
       "Should be valid if all the attributes are present.")
+  end
+
+  test "validations" do
+    @required_params.keys.each do |param|
+      assert(!Movie.new(@required_params.except(param)).valid?,
+        "Should not be valid if #{param} is missing.")
+    end
   end
 
   test "dependent_destroy_ratings" do

@@ -46,4 +46,5 @@ no_rating:
   user: azgar
   title: No Rating
   description: No rating description, this movie has no rating.
+  category_id: <%= Movie::Category::COMEDY %>
   avg_rating: 0.0

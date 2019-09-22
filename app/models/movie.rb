@@ -30,9 +30,10 @@ class Movie < ApplicationRecord
     I18n.t("movie.category.#{CATEGORY_MAPPING[category_id]}")
   end
 
-  validates :title, presence: true
+  validates :title, :category_id, presence: true
 
   belongs_to :user
+
   has_many :ratings, dependent: :destroy
 
   def reset_avg_rating
