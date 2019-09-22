@@ -2,7 +2,8 @@
   "name": "moviebase",
   "private": true,
   "engines": {
-    "node": "11.10.1"
+    "node": ">=11.10.1",
+    "node": ">=6.7.0"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -33,15 +34,5 @@
     "react-test-renderer": "^16.9.0",
     "redux-mock-store": "^1.5.3",
     "webpack-dev-server": "^3.8.1"
-  },
-  "jest": {
-    "moduleDirectories": [
-      "node_modules",
-      "app/javascript/packs"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/javascript/__mocks__/fileMock.js",
-      "\\.(scss|css|less)$": "<rootDir>/test/javascript/__mocks__/styleMock.js"
-    }
   }
 }
