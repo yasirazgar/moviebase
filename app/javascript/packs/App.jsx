@@ -7,11 +7,30 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
+
 import Movies from './Movies';
+import MainNav from './MainNav';
+import SearchNav from './SearchNav';
+import LoginAlert from './LoginAlert';
+
+import './Main.scss'
 
 const App = ({translations}) => (
   <div>
-    <Movies />
+    <MainNav />
+    <Container>
+      <Row>
+        <Col>
+          <SearchNav />
+          <LoginAlert />
+          <Movies />
+        </Col>
+      </Row>
+    </Container>
   </div>
 )
 

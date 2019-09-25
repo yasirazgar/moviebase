@@ -7,11 +7,15 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Pagination from 'react-bootstrap/Pagination';
 
 import { fetchMovies } from '../actions'
 
-import './Movies.scss'
+import Movie from './Movie'
+import Paginator from './Paginator'
 
 const Movies = ({movies, translations, fetchMovies}) => {
 
@@ -21,28 +25,16 @@ const Movies = ({movies, translations, fetchMovies}) => {
 
   const moviesRow = movies.map((movie, index) => {
     return(
-      <tr key={movie[0]}>
-        <td> {movie[1]} </td>
-        <td> {movie[2]} </td>
-        <td> {movie[5]} </td>
-        <td> {movie[3]} </td>
-      </tr>
+      <Movie key={movie[0]} movie={movie}/>
     )
   })
 
   return (
     <div className='movies-wrapper'>
-      <Table striped bordered hover size="sm">
-        <thead>
-          <td> {translations.title} </td>
-          <td> {translations.description} </td>
-          <td> {translations.category} </td>
-          <td> {translations.rating} </td>
-        </thead>
-        <tbody className='movie'>
-          { moviesRow }
-        </tbody>
-      </Table>
+      <Accordion >
+        {moviesRow}
+      </Accordion>
+      <Paginator />
     </div>
   )
 }
