@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
 
     if @movie.save
       data = {
-        movie: { id: @movie.id, title: @movie.title, description: @movie.description },
+        movie: movie_fields(@movie),
         message: I18n.t('movie.create.success')
       }
       render json: data
@@ -61,10 +61,14 @@ class MoviesController < ApplicationController
 
   def movies_json(movies)
     json = movies.map{ |movie|
-      [movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category]
+      movie_fields(movie)
     }
 
     { movies: json }
+  end
+
+  def movie_fields(movie)
+    [movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category]
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_movie

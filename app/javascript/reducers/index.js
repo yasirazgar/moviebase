@@ -16,6 +16,8 @@ const movies = (state=INITIAL_MOVIES, action) => {
     case Actions.FETCH_MOVIES:
     case Actions.SEARCH_MOVIES:
       return action.payload.response.data.movies;
+    case Actions.ADD_MOVIE:
+      return [action.payload.data.movie,...state];
     default:
       return state;
   }

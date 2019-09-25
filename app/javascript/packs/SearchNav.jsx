@@ -17,7 +17,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 
-import AddNewMovieModal from './Modals/AddNewMovie';
+import AddMovieModal from './Modals/AddMovie';
 
 import { fetchRatings, fetchCategories, searchMovies } from '../actions'
 
@@ -87,7 +87,7 @@ const SearchNav = (props) => {
   return(
     <Navbar className="sub-nav" bg="light" variant="light" expand="lg" sticky={"top"}>
       {user && (<Button variant="primary" onClick={handleAddMovieShow} >{translations.add_new}</Button>)}
-      <AddNewMovieModal show={showAddMovie} handleClose={handleAddMovieShow}/>
+      <AddMovieModal show={showAddMovie} handleClose={handleAddMovieClose}/>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Form _ref="term" className="ml-auto" inline onSubmit={handleSubmit}>

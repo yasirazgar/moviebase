@@ -63,8 +63,8 @@ export const logout = () => {
   return({type: Actions.LOGOUT})
 }
 
-export const addNewMovie = data => async dispatch => {
+export const addMovie = data => async dispatch => {
   const response = await moviesRequest.post('/movies.json', data);
 
-  dispatch({type: Actions.ADD_NEW_MOVIE, payload: response: response})
+  dispatch({type: Actions.ADD_MOVIE, payload: response})
 }

@@ -1,3 +1,5 @@
+require 'json_web_token'
+
 class ApplicationController < ActionController::Base
   before_action :authenticate_request
   after_action :setup_page_headers

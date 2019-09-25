@@ -19,7 +19,7 @@ const Movie = ({movie, translations}) => (
         </span>
 
         <span className="float-right">
-          {movie[3]}
+          {movie[3] || 'NR'}
         </span>
       </Accordion.Toggle>
     </Card.Header>

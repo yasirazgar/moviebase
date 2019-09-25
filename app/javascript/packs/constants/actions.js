@@ -8,6 +8,6 @@ export const SET_PAGE = 'SET_PAGE'
 export const SIGNUP = 'SIGNUP'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
-export const ADD_NEW_MOVIE = 'ADD_NEW_MOVIE'
+export const ADD_MOVIE = 'ADD_MOVIE'
 
 export * from './actions';

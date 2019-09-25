@@ -23,9 +23,9 @@ import { useState } from 'react'
 
 const MainNav = ({logout, user, translations}) => {
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
+  const [showSignup, setShowSignup] = useState(false);
   const handleSignupClose = () => setShowSignup(false);
   const handleSignupShow = () => setShowSignup(true);
 
