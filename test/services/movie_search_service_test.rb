@@ -44,6 +44,17 @@ class MovieSearchServiceTest < ActiveSupport::TestCase
     assert_empty(@service.errors, "Should not have any errors.")
   end
 
+  test "search-only_rating_zero" do
+    assert_equal(
+      [
+        movies(:no_rating)
+      ],
+      @service.search({rating: 0}),
+      "Should return movies with no rating")
+
+    assert_empty(@service.errors, "Should not have any errors.")
+  end
+
   test "search-all-with_invalid_rating" do
     assert_equal(
       @all_movies,
