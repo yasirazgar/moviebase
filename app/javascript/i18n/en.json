@@ -1,9 +1,13 @@
 {
   "hello": "Hello",
   "logout": "Logout",
+  "singup": "Signup",
   "login": "Login",
   "title": "Title",
   "description": "Description",
   "category": "Category",
-  "rating": "Rating"
+  "rating": "Rating",
+  "login_alert": "Please login to create or rate a movie.",
+  "search": "Search",
+  "search_hint": "Search Movies"
 }

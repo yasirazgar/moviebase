@@ -15,7 +15,7 @@ class AuthenticationController < ApplicationController
         message: I18n.t('authentication.success')}
     else
       render json: {
-        error: I18n.t('authentication.failure')
+        error: { message: I18n.t('authentication.failure') }
       }, status: 401
     end
   end

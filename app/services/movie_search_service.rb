@@ -38,6 +38,9 @@ class MovieSearchService
     return rel if rating.blank?
 
     rating = rating.to_i
+    if (rating == 0)
+      return rel.where("avg_rating is NULL")
+    end
 
     unless Rating::MIN.upto(Rating::MAX).include?(rating)
       @errors << I18n.t('movie.search.error.rating')

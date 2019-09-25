@@ -3,6 +3,7 @@ class Paginator
 
   DEFAULT_LIMIT = 10
   DEFAULT_PAGE = 1
+  DEFAULT_RANGE = 10
 
   attr_accessor :relation, :params, :limit, :page, :total_count, :next_page, :prev_page, :first_page, :last_page
 
@@ -19,10 +20,17 @@ class Paginator
     @next_page = next_page
     @prev_page = prev_page
     @offset = (@page -1) * @limit
+    @range = range
   end
 
   def paginate
     @relation.limit(@limit).offset(@offset)
+  end
+
+  def range
+    start = [@first_page, (@page - DEFAULT_RANGE)].max
+    finish = [@last_page, (@page + 10)].min
+    (start..finish).to_a
   end
 
   def prev_link
@@ -64,12 +72,7 @@ class Paginator
   end
 
   def header_links
-    {
-      Link: links.map(&method(:gen_header_link)),
-      Total: @total_pages,
-      Limit: @limit,
-      Current: @page
-    }.map(&method(:gen_header_link)).join(', ')
+    links.map(&method(:gen_header_link)).join(', ')
   end
 
   private

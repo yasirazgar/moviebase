@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# Character.create(name: 'Luke', movie: movies.first)
 
 password = 'PassworD@55'
 yasir, azgar, randy = User.create(
@@ -99,6 +99,33 @@ Rating.create(
     {user: yasir, movie: interstellar, rating: 5},
     {user: azgar, movie: interstellar, rating: 3},
     {user: randy, movie: interstellar, rating: 4}
+  ]
+)
+
+redemption, rising, copper = Movie.create(
+  ['redemption', 'rising', 'copper'].map do |movie|
+    {title: movie, description: desc.call(movie), user: randy, category_id: Movie::Category::DRAMA}
+  end
+)
+Rating.create(
+  [
+    {user: yasir, movie: redemption, rating: 4},
+    {user: azgar, movie: redemption, rating: 4},
+    {user: randy, movie: redemption, rating: 4}
+  ]
+)
+Rating.create(
+  [
+    {user: yasir, movie: rising, rating: 3},
+    {user: azgar, movie: rising, rating: 4},
+    {user: randy, movie: rising, rating: 3}
+  ]
+)
+Rating.create(
+  [
+    {user: yasir, movie: copper, rating: 5},
+    {user: azgar, movie: copper, rating: 3},
+    {user: randy, movie: copper, rating: 4}
   ]
 )
 
