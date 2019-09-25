@@ -1,48 +1,20 @@
 require 'test_helper'
 
 class RatingsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @rating = ratings(:yasir_lion_king)
-    @movie = movies(:lion_king)
-    @yasir = users(:yasir)
-    @user_no_rating = users(:azgar)
-  end
+  test 'index' do
+    get(ratings_url)
 
-  test 'create a rating if not available' do
-    params = {
-      movie_id: @movie.id,
-      rating: 3
-    }
-
-    assert_nil(Rating.find_by(movie_id: @movie.id, user_id: @user_no_rating.id),
-      "Initially user should not have rated for the movie")
-
-    assert_difference('@movie.ratings.count', 1) do
-      json_patch(rate_movie_ratings_url(@movie), @user_no_rating, params)
-    end
-
-    assert_equal(3, @movie.reload.avg_rating,
-      "Should reset/update avg_rating")
-  end
-
-  test 'update rating if already available' do
-    new_rating = 5
-    old_rating = 3
-    params = {
-      movie_id: @movie.id,
-      rating: new_rating
-    }
-    assert_equal(old_rating, @rating.rating,
-      "Initially should have a rating of #{old_rating}")
-
-    assert_difference('@movie.ratings.count', 0) do
-      json_patch(rate_movie_ratings_url(@movie), @yasir, params)
-    end
-
-    assert_equal(new_rating, @rating.reload.rating,
-      "Should update the rating to #{new_rating}")
-
-    assert_equal(4, @movie.reload.avg_rating,
-      "Should reset/update avg_rating")
+    assert_response :success
+    assert_equal(
+      {
+        "0"=>["Not Rated", 1],
+        "1"=>["1 Star", 0],
+        "2"=>["2 Stars", 0],
+        "3"=>["3 Stars", 4],
+        "4"=>["4 Stars", 1],
+        "5"=>["5 Stars", 1]
+      },
+      json_response["ratings"],
+      "Should return ratings and ratings_count")
   end
 end

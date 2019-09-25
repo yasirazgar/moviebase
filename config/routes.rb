@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   scope format: true, constraints: { format: 'json' }, defaults: { format: :json } do
 
     post "login", to: "authentication#create", as: "login"
-    post "signup", to: "users#create", as: "signup"
     resources :users, only: :create
+    resources :categories, only: :index
+    resources :ratings, only: :index
 
     resources :movies, only: [:index, :update, :create, :update, :destroy] do
       collection do

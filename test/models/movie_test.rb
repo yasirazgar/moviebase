@@ -42,21 +42,44 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test "category" do
-    Movie::Category.constants.each do |category|
-      assert_equal(
-        [
-          movies(:reservoir_dogs).category,
-          movies(:god_father).category,
-          movies(:inside_out).category,
-          movies(:snatch).category
-        ],
-        [
-          I18n.t('movie.category.action'),
-          I18n.t('movie.category.drama'),
-          I18n.t('movie.category.animation'),
-          I18n.t('movie.category.comedy')
-        ],
-        "Should correctly map all the categories")
-    end
+    assert_equal(
+      [
+        movies(:reservoir_dogs).category,
+        movies(:god_father).category,
+        movies(:inside_out).category,
+        movies(:snatch).category
+      ],
+      [
+        I18n.t('movie.category.action'),
+        I18n.t('movie.category.drama'),
+        I18n.t('movie.category.animation'),
+        I18n.t('movie.category.comedy')
+      ],
+      "Should correctly map all the categories")
+  end
+
+  test "category_map" do
+    assert_equal(
+      {
+        Movie::Category::ACTION => [I18n.t('movie.category.action'), 2],
+        Movie::Category::ANIMATION => [I18n.t('movie.category.animation'), 2],
+        Movie::Category::COMEDY => [I18n.t('movie.category.comedy'), 2],
+        Movie::Category::DRAMA => [I18n.t('movie.category.drama'), 1]
+      }, Movie.category_map,
+      "Should group and map based on categories.")
+  end
+
+  test "ratings_map" do
+    assert_equal(
+      {
+        0 =>["Not Rated", 1],
+        1 =>["1 Star", 0],
+        2 =>["2 Stars", 0],
+        3 =>["3 Stars", 4],
+        4 =>["4 Stars", 1],
+        5 =>["5 Stars", 1]
+      },
+      Movie.ratings_map,
+      "Should group and map ratings.")
   end
 end

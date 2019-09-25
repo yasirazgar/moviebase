@@ -36,6 +36,10 @@ en:
       drama: Drama
       comedy: Comedy
       animation: Animation
+    stars:
+      not_rated: 'Not Rated'
+      one: 1 Star
+      multiple: '%{count} Stars'
     search:
       error:
         category: Invalid category.
