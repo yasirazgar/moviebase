@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application for creating, listing and rating movies.
 
-Things you may want to cover:
+Tried to keep the application simple by avoiding additional gems/libraries and queuing/caching mechanisms. 
 
-* Ruby version
 
-* System dependencies
+## Tech Stack
+Backend:
+	Api architecture style - RESTful api
+	Language/Framework - Rails (6.0.0) - Ruby (2.6.4)
+	Unit testing framework - Minitest - 
+    rails test - runs all unit test
 
-* Configuration
+Front-end: 
+  React-16.9, Bootstrap-4.3.1
+  Unit testing framework - Jest, enzyme - 
+    yarn jest - runs all unit test
 
-* Database creation
+Database:
+  Postgresql - 9.6
+  Database setup rails db:create db:migrate db:seed
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Currently the app is deployed to heroku - https://movibase.herokuapp.com
