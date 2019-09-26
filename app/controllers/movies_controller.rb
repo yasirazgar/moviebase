@@ -54,7 +54,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie.destroy
 
-    render json: {message: I18n.t('movie.destroy.success')}
+    render json: {movie_id: @movie.id, message: I18n.t('movie.destroy.success')}
   end
 
   private

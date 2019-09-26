@@ -5,12 +5,38 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
+import { useState } from 'react'
+
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Pagination from 'react-bootstrap/Pagination';
 
-const Movie = ({movie, translations}) => (
+import { updateMovie, deleteMovie } from '../actions'
+
+import EditMovieModal from './Modals/EditMovie';
+
+const Movie = ({movie, updateMovie, deleteMovie, translations}) => {
+  const handleEdit = (event) => {
+    const id = event.target.getAttribute("id");
+    updateMovie(id, data);
+
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  const handleDelete = (event) => {
+    const id = event.target.getAttribute("id");
+    deleteMovie(id);
+
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  const [showUpdateMovie, setShowUpdateMovie] = useState(false);
+  const handleUpdateMovieClose = () => setShowUpdateMovie(false);
+  const handleUpdateMovieShow = () => setShowUpdateMovie(true);
+
+  return (
   <Card >
     <Card.Header>
       <Accordion.Toggle as={Card.Header} variant="link" eventKey={movie[0]}>
@@ -19,7 +45,9 @@ const Movie = ({movie, translations}) => (
         </span>
 
         <span className="float-right">
-          {movie[3] || 'NR'}
+          <span className="margin"> {movie[3] || 'NR'} </span>
+          <span className="margin fas fa-pencil-alt" id={movie[0]} onClick={handleUpdateMovieShow} />
+          <span className="margin fas fa-trash-alt" id={movie[0]} onClick={handleDelete} />
         </span>
       </Accordion.Toggle>
     </Card.Header>
@@ -31,8 +59,9 @@ const Movie = ({movie, translations}) => (
           {translations.description}: {movie[5]}
        </Card.Body>
     </Accordion.Collapse>
+    <EditMovieModal closeHandler={handleUpdateMovieClose} show={showUpdateMovie} movie={movie}/>
   </Card>
-)
+)}
 
 const mapStateToProps = state => {
   return {
@@ -40,5 +69,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Movie)
+export default connect(mapStateToProps, {deleteMovie, updateMovie})(Movie)
 

@@ -18,6 +18,18 @@ const movies = (state=INITIAL_MOVIES, action) => {
       return action.payload.response.data.movies;
     case Actions.ADD_MOVIE:
       return [action.payload.data.movie,...state];
+    case Actions.DELETE_MOVIE:
+      const movie_id = action.payload.data.movie_id
+      const movs = state.array.filter(function(value, index, arr){
+        return value[0] != movie_id;
+      })
+      return movs;
+    case Actions.UPDATE_MOVIE:
+      const updated_movie = action.payload.data.movie;
+      let movies = [...state];
+      const updatedIndex = movies.findIndex(movie => movie[0] == updated_movie.id);
+      movies[updatedIndex] = movie;
+      return mvs
     default:
       return state;
   }
