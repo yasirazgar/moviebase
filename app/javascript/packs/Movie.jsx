@@ -41,8 +41,8 @@ const Movie = ({user, movie, updateMovie, deleteMovie, translations}) => {
     actions = (
       <>
         <span className="margin" id={movie[0]} onClick={handleDelete}> {movie[7]} </span>
-        <span className="margin fas fa-pencil-alt" id={movie[0]} onClick={handleUpdateMovieShow} />
-        <span className="margin fas fa-trash-alt" id={movie[0]} onClick={handleDelete} />
+        <span className="margin fa fa-pencil" id={movie[0]} onClick={handleUpdateMovieShow} />
+        <span className="margin fa fa-trash" id={movie[0]} onClick={handleDelete} />
       </>
     )
   }
