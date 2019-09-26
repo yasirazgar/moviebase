@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       collection do
         get :search
       end
-      resources :ratings, only: [] do
+      resources :ratings, controller: 'movies/ratings' ,only: [] do
         collection do
           patch :rate
         end

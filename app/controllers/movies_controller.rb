@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  include MoviesConcern
+
   before_action :set_movie, only: [:update, :destroy]
   skip_before_action :authenticate_request, only: [:index, :search]
   before_action :authorize_user, except: [:index, :search, :create]
@@ -13,7 +15,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    movies = MovieSearchService(current_user).new.search(params)
+    movies = MovieSearchService.new(current_user).search(params)
     @paginator = Paginator.new(movies, params, :search_movies_url)
     movies = @paginator.paginate
 
@@ -67,13 +69,6 @@ class MoviesController < ApplicationController
     { movies: json }
   end
 
-  def movie_fields(movie)
-    fields = [
-      movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category, movie.user_id,
-    ]
-    fields << movie.user_rating if movie.respond_to?(:user_rating)
-    fields
-  end
   # Use callbacks to share common setup or constraints between actions.
   def set_movie
     @movie = Movie.with_user_ratings(current_user).find(params[:id])

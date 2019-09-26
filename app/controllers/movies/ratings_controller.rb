@@ -1,5 +1,7 @@
 class Movies::RatingsController < ApplicationController
-  before_filter :set_movie, :set_rating, except: :index
+  include MoviesConcern
+
+  before_action :set_movie, :set_rating
 
   def rate
     @rating ||= Rating.new(movie_id: @movie.id, user_id: current_user.id)
@@ -8,18 +10,12 @@ class Movies::RatingsController < ApplicationController
     @rating.save
 
     data = {
-      rating: @rating.rating,
-      avg_rating: @movie.avg_rating,
-      message: I18n.t('rating.rate')
+      movie: movie_fields(@movie.reload)
     }
     render json: data
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_movie
-    @movie = Movie.find(params[:movie_id])
-  end
 
   def set_rating
     @rating = Rating.find_by(movie_id: params[:movie_id], user_id: current_user.id)

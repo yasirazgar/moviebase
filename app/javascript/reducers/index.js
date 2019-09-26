@@ -1,6 +1,16 @@
 import { combineReducers } from 'redux';
 import * as Actions from '../packs/constants/actions'
 
+// Move this and all movie actions into separate service
+const update_movie = (updated_movie, state) => {
+  let movies = [...state];
+  const updatedIndex = movies.findIndex(movie => movie[0] == updated_movie[0]);
+  movies[updatedIndex] = updated_movie;
+
+  return movies
+};
+
+
 const INITIAL_TRANSLATIONS = {}
 const translations = (state=INITIAL_TRANSLATIONS, action) => {
   if (action.type === Actions.BUILD_TRANSLATIONS){
@@ -25,11 +35,9 @@ const movies = (state=INITIAL_MOVIES, action) => {
       })
       return movs;
     case Actions.UPDATE_MOVIE:
-      const updated_movie = action.payload.data.movie;
-      let movies = [...state];
-      const updatedIndex = movies.findIndex(movie => movie[0] == updated_movie[0]);
-      movies[updatedIndex] = updated_movie;
-      return movies;
+      return update_movie(action.payload.data.movie, state);
+    case Actions.RATE_MOVIE:
+      return update_movie(action.payload.data.movie, state);
     default:
       return state;
   }

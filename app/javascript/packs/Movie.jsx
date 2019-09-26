@@ -15,6 +15,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import { updateMovie, deleteMovie } from '../actions'
 
 import EditMovieModal from './Modals/EditMovie';
+import Ratings from './Ratings';
 
 const Movie = ({user, movie, updateMovie, deleteMovie, translations}) => {
   const handleEdit = (event) => {
@@ -40,7 +41,6 @@ const Movie = ({user, movie, updateMovie, deleteMovie, translations}) => {
   if (user && (movie[6] == user['id'])){
     actions = (
       <>
-        <span className="margin" id={movie[0]} onClick={handleDelete}> {movie[7]} </span>
         <span className="margin fa fa-pencil" id={movie[0]} onClick={handleUpdateMovieShow} />
         <span className="margin fa fa-trash" id={movie[0]} onClick={handleDelete} />
       </>
@@ -57,7 +57,9 @@ const Movie = ({user, movie, updateMovie, deleteMovie, translations}) => {
 
         <span className="float-right">
           {actions}
-          <span className="margin"> {movie[3] || 'NR'} </span>
+          <Ratings movie={movie}/>
+          <span className="margin-left"> {movie[3] || translations.not_rated} </span>
+          <span className="fa fa-star" />
         </span>
       </Accordion.Toggle>
     </Card.Header>

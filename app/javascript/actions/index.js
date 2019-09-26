@@ -82,3 +82,10 @@ export const deleteMovie = id => async dispatch => {
 
   dispatch({type: Actions.DELETE_MOVIE, payload: response})
 }
+
+export const rateMovie = (movie_id, data) => async dispatch => {
+  const url = `/movies/${movie_id}/ratings/rate.json`;
+  const response = await moviesRequest.patch(url, data);
+
+  dispatch({type: Actions.RATE_MOVIE, payload: response})
+}
