@@ -24,7 +24,14 @@ const Login = ({show, login, handleLoginClose, translations}) => {
     handleLoginClose();
     login({email: email, password: password});
 
-    window.location.reload();
+    // !!! Dirty fix
+    // axios instance is created before the login action,
+    // so localStorage item are ignored,
+    // Reload the page to reflect items in localStorage
+    // Analyze and add a correct fix for this.
+    setTimeout( () => {
+      window.location.reload();
+    }, 3000);
   }
 
   return (
