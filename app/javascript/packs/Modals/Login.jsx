@@ -24,7 +24,7 @@ const Login = ({show, login, handleLoginClose, translations}) => {
     handleLoginClose();
     login({email: email, password: password});
 
-    window.location.reload;
+    window.location.reload();
   }
 
   return (

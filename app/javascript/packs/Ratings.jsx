@@ -10,6 +10,9 @@ import { useState } from 'react'
 import { rateMovie } from '../actions'
 
 const Ratings = ({user, movie, rateMovie, translations}) => {
+  if (!user){
+    return null;
+  }
   const [ratings, setRatings] = useState((movie[7] || 0));
 
   const handleEdit = (event) => {
