@@ -22,3 +22,8 @@ Database:
   Database setup rails db:create db:migrate db:seed
 
 Currently the app is deployed to heroku - https://movibase.herokuapp.com
+
+Existing user's in db via seed
+email: yasir@risk.com, password: PassworD@55
+email: azgar@risk.com, password: PassworD@55
+email: randy@risk.com, password: PassworD@55
