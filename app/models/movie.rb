@@ -33,6 +33,11 @@ class Movie < ApplicationRecord
 
   has_many :ratings, dependent: :destroy
 
+  scope :with_user_ratings, -> (user) {
+    joins("LEFT JOIN ratings on ratings.movie_id = movies.id AND ratings.user_id = #{user.id}")
+    .select("movies.*, ratings.rating as user_rating")
+  }
+
   def self.ratings_map
     hash = {
       0 => [I18n.t('movie.stars.not_rated')],

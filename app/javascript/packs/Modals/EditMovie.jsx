@@ -16,49 +16,49 @@ import { updateMovie } from '../../actions'
 
 const UpdateMovie = ({categories, updateMovie, show, handleClose, translations, movie}) => {
 
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState(movie[1]);
   const handleTitleChange = (event) => { setTitle(event.target.value); }
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState(movie[2]);
   const handleDescriptionChange = (event) => { setDescription(event.target.value); }
-  const [category_id, setCategory] = useState();
+  const [category_id, setCategory] = useState(movie[4]);
   const handleCategoryChange = (event) => {
     setCategory(event.target.selectedOptions[0].getAttribute('id'));
   }
 
   const handleSubmit = () => {
-    updateMovie({movie: {title, description, category_id}});
+    updateMovie(movie[0], {movie: {title, description, category_id}});
     handleClose();
   }
 
-  const categoriesOptions = Object.keys(categories).map((category_id, index) => {
-    return(<option key={category_id} id={category_id}>{categories[category_id][0]}</option>)
+  const categoriesOptions = Object.keys(categories).map((cat_id, index) => {
+    return(<option selected={(cat_id == category_id)} key={cat_id} id={cat_id}>{categories[cat_id][0]}</option>)
   })
 
   return (
     <Modal show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Update Movie</Modal.Title>
+        <Modal.Title>{translations.update_movie}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="formBasicTitle">
-            <Form.Control type="name" placeholder="Title" value={movie.title} onChange={handleTitleChange} />
+            <Form.Control type="name" placeholder={translations.title} value={title} onChange={handleTitleChange} />
           </Form.Group>
           <Form.Control as="select" onChange={handleCategoryChange}>
             {categoriesOptions}
           </Form.Control>
 
           <Form.Group controlId="formBasicDescription">
-            <Form.Control as="textarea" placeholder="Description" value={movie.description} onChange={handleDescriptionChange}/>
+            <Form.Control as="textarea" placeholder={translations.description} value={description} onChange={handleDescriptionChange}/>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          {translations.close}
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Save Changes
+          {translations.update}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -23,30 +23,32 @@ const Login = ({show, login, handleLoginClose, translations}) => {
   const handleLogin = () => {
     handleLoginClose();
     login({email: email, password: password});
+
+    window.location.reload;
   }
 
   return (
     <Modal show={show} onHide={handleLoginClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Login</Modal.Title>
+        <Modal.Title>{translations.login}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="formBasicEmail">
-            <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} />
+            <Form.Control type="email" placeholder={translations.email} onChange={handleEmailChange} />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
+            <Form.Control type="password" placeholder={translations.password} onChange={handlePasswordChange}/>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleLoginClose}>
-          Close
+          {translations.close}
         </Button>
         <Button variant="primary" onClick={handleLogin}>
-          Save Changes
+          {translations.login}
         </Button>
       </Modal.Footer>
     </Modal>

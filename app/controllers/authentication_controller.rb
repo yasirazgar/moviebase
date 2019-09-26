@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
       jwt = JsonWebToken.encode(user_id: user.id)
 
       render json: {
-        user: user.slice(:name, :email),
+        user: user.slice(:id, :name, :email),
         jwt: jwt,
         message: I18n.t('authentication.success')}
     else

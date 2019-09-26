@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   before_action :authorize_user, except: [:index, :search, :create]
 
   def index
-    movies = Movie.all
+    movies = current_user ? Movie.with_user_ratings(current_user) : Movie.all
 
     @paginator = Paginator.new(movies, params, :movies_url)
     movies = @paginator.paginate
@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    movies = MovieSearchService.new.search(params)
+    movies = MovieSearchService(current_user).new.search(params)
     @paginator = Paginator.new(movies, params, :search_movies_url)
     movies = @paginator.paginate
 
@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
   def update
     if @movie.update(movie_params)
       data = {
-        movie: { id: @movie.id, title: @movie.title, description: @movie.description },
+        movie: movie_fields(@movie),
         message: I18n.t('movie.create.success')
       }
 
@@ -68,11 +68,15 @@ class MoviesController < ApplicationController
   end
 
   def movie_fields(movie)
-    [movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category]
+    fields = [
+      movie.id, movie.title, movie.description, movie.avg_rating, movie.category_id, movie.category, movie.user_id,
+    ]
+    fields << movie.user_rating if movie.respond_to?(:user_rating)
+    fields
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.with_user_ratings(current_user).find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

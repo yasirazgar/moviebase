@@ -1,5 +1,5 @@
 class Movies::RatingsController < ApplicationController
-  before_action :set_movie, :set_rating, except: :index
+  before_filter :set_movie, :set_rating, except: :index
 
   def rate
     @rating ||= Rating.new(movie_id: @movie.id, user_id: current_user.id)

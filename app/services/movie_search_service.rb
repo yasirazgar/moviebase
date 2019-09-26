@@ -1,12 +1,12 @@
 class MovieSearchService
   attr_accessor :errors
 
-  def initialize
+  def initialize(user = nil)
     @errors = []
   end
 
   def search(params)
-    rel = Movie.all
+    rel = current_user ? Movie.with_user_ratings(current_user) : Movie.all
     rel = filter_by_term(rel, params[:term])
     rel = filter_by_category(rel, params[:category_id])
     filter_by_rating(rel, params[:rating])

@@ -59,7 +59,7 @@ export const signup = data => async dispatch => {
 }
 
 export const logout = () => {
-  userService.logout
+  userService.logout()
   return({type: Actions.LOGOUT})
 }
 

@@ -1,8 +1,14 @@
 {
   "hello": "Hello",
+  "welcome": "Welcome",
   "logout": "Logout",
-  "singup": "Signup",
+  "signup": "Signup",
   "login": "Login",
+  "email": "Email",
+  "name": "Name",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "close": "Close",
   "title": "Title",
   "description": "Description",
   "category": "Category",
@@ -10,5 +16,8 @@
   "login_alert": "Please login to create or rate a movie.",
   "search": "Search",
   "search_hint": "Search Movies",
-  "add_new": "Add New"
+  "add_new": "Add New",
+  "add": "Add",
+  "update_movie": "Update Movie",
+  "update": "Update"
 }

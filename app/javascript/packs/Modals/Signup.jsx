@@ -34,33 +34,33 @@ const Signup = ({signup, show, handleSignupClose, translations}) => {
   return (
     <Modal show={show} onHide={handleSignupClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Signup</Modal.Title>
+        <Modal.Title>{translations.signup}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="formBasicEmail">
-            <Form.Control type="name" placeholder="Name" onChange={handleNameChange} />
+            <Form.Control type="name" placeholder={translations.name} onChange={handleNameChange} />
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
-            <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} />
+            <Form.Control type="email" placeholder={translations.email} onChange={handleEmailChange} />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
+            <Form.Control type="password" placeholder={translations.password} onChange={handlePasswordChange}/>
           </Form.Group>
 
           <Form.Group controlId="formBasicConfirmPassword">
-            <Form.Control type="password" placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
+            <Form.Control type="password" placeholder={translations.confirm_password} onChange={handleConfirmPasswordChange}/>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleSignupClose}>
-          Close
+          {translations.close}
         </Button>
         <Button variant="primary" onClick={handleSignup}>
-          Save Changes
+          {translations.signup}
         </Button>
       </Modal.Footer>
     </Modal>

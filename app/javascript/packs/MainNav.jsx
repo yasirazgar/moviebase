@@ -34,8 +34,8 @@ const MainNav = ({logout, user, translations}) => {
     rightContent = (
       <>
         <NavItem>
+          <span className='username margin'> {`${translations.welcome} ${user.name} !`} </span>
           <Button variant="primary" className="mr-1" onClick={logout}>{translations.logout}</Button>
-
         </NavItem>
       </>
     )
@@ -47,7 +47,7 @@ const MainNav = ({logout, user, translations}) => {
           <Button variant="primary" className="mr-1" onClick={setShowLogin}>{translations.login}</Button>
         </NavItem>
         <NavItem>
-          <Button variant="primary" onClick={setShowSignup} >{translations.singup}</Button>
+          <Button variant="primary" onClick={setShowSignup} >{translations.signup}</Button>
         </NavItem>
     </>
     )

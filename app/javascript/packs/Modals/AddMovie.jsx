@@ -37,28 +37,28 @@ const AddMovie = ({categories, addMovie, show, handleClose, translations}) => {
   return (
     <Modal show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Add New Movie</Modal.Title>
+        <Modal.Title>{translations.add_new}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="formBasicTitle">
-            <Form.Control type="name" placeholder="Title" onChange={handleTitleChange} />
+            <Form.Control type="name" placeholder={translations.title} onChange={handleTitleChange} />
           </Form.Group>
           <Form.Control as="select" onChange={handleCategoryChange}>
             {categoriesOptions}
           </Form.Control>
 
           <Form.Group controlId="formBasicDescription">
-            <Form.Control as="textarea" placeholder="Description" onChange={handleDescriptionChange}/>
+            <Form.Control as="textarea" placeholder={translations.description} onChange={handleDescriptionChange}/>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          {translations.close}
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Save Changes
+          {translations.add}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       jwt = JsonWebToken.encode(user_id: user.id)
 
       data = {
-        user: user.slice(:name, :email),
+        user: user.slice(:id, :name, :email),
         jwt: jwt,
         message: I18n.t('user.create.success')
       }

@@ -16,7 +16,7 @@ import { updateMovie, deleteMovie } from '../actions'
 
 import EditMovieModal from './Modals/EditMovie';
 
-const Movie = ({movie, updateMovie, deleteMovie, translations}) => {
+const Movie = ({user, movie, updateMovie, deleteMovie, translations}) => {
   const handleEdit = (event) => {
     const id = event.target.getAttribute("id");
     updateMovie(id, data);
@@ -36,6 +36,17 @@ const Movie = ({movie, updateMovie, deleteMovie, translations}) => {
   const handleUpdateMovieClose = () => setShowUpdateMovie(false);
   const handleUpdateMovieShow = () => setShowUpdateMovie(true);
 
+  let actions
+  if (user && (movie[6] == user['id'])){
+    actions = (
+      <>
+        <span className="margin" id={movie[0]} onClick={handleDelete}> {movie[7]} </span>
+        <span className="margin fas fa-pencil-alt" id={movie[0]} onClick={handleUpdateMovieShow} />
+        <span className="margin fas fa-trash-alt" id={movie[0]} onClick={handleDelete} />
+      </>
+    )
+  }
+
   return (
   <Card >
     <Card.Header>
@@ -45,9 +56,8 @@ const Movie = ({movie, updateMovie, deleteMovie, translations}) => {
         </span>
 
         <span className="float-right">
+          {actions}
           <span className="margin"> {movie[3] || 'NR'} </span>
-          <span className="margin fas fa-pencil-alt" id={movie[0]} onClick={handleUpdateMovieShow} />
-          <span className="margin fas fa-trash-alt" id={movie[0]} onClick={handleDelete} />
         </span>
       </Accordion.Toggle>
     </Card.Header>
@@ -59,13 +69,14 @@ const Movie = ({movie, updateMovie, deleteMovie, translations}) => {
           {translations.description}: {movie[5]}
        </Card.Body>
     </Accordion.Collapse>
-    <EditMovieModal closeHandler={handleUpdateMovieClose} show={showUpdateMovie} movie={movie}/>
+    <EditMovieModal handleClose={handleUpdateMovieClose} show={showUpdateMovie} movie={movie}/>
   </Card>
 )}
 
 const mapStateToProps = state => {
   return {
-    translations: state.translations
+    translations: state.translations,
+    user: state.user
   }
 }
 

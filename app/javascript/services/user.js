@@ -1,7 +1,6 @@
 import { LOGIN, SIGNUP, LOGOUT } from '../packs/constants/actions'
 
 const login = (dispatch, response) => {
-  debugger
   if (response.status === 200){
     setLoginItems(response)
     dispatch({type: LOGIN, payload: response});
@@ -21,7 +20,6 @@ const signup = (response, dispatch) => {
 }
 
 const setLoginItems = (response) => {
-  debugger
   window.localStorage.setItem('jwt', response.data.jwt)
   window.localStorage.setItem('user', JSON.stringify(response.data.user))
 
