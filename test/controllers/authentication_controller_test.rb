@@ -13,7 +13,7 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_equal(
-      user.slice(:name, :email), json_response['user'],
+      user.slice(:id, :name, :email), json_response['user'],
       "Should return username and email")
     assert_equal(
       I18n.t('authentication.success'), json_response['message'],
@@ -32,9 +32,9 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
 
-    assert_equal({
-        'error' => I18n.t('authentication.failure')
-      }, json_response,
-      "Should return error message")
+    assert_equal(
+      {"error" => {"message" => "Authentication failed."}},
+      json_response,
+      "Should return error message.")
   end
 end

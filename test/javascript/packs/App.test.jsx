@@ -15,10 +15,6 @@ describe("App", () => {
           <App />
       </Provider>
     )
-
-    // expect(wrapper.exists(<h1>Test page</h1>)
-    //   ).toBe(true);
-
     expect(wrapper).toMatchSnapshot();
   });
 });

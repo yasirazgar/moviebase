@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       render json: data
       return
     end
-byebug
+
     data = {error: { message: user.errors.full_messages.join(', ') }}
     render json: data, status: :unprocessable_entity
   end

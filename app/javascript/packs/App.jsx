@@ -26,6 +26,7 @@ const App = ({translations}) => (
       <Row>
         <Col>
           <SearchNav />
+          <br/>
           <LoginAlert />
           <Movies />
         </Col>

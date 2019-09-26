@@ -77,14 +77,14 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
 
-    assert_not_nil(json_response['movie']['id'], 'Should set movie id')
+    assert_not_nil(json_response['movie'][0], 'Should set movie id')
     assert_equal(
       params[:movie][:title],
-      json_response['movie']['title'],
+      json_response['movie'][1],
       'Should set movie title')
     assert_equal(
       params[:movie][:description],
-      json_response['movie']['description'],
+      json_response['movie'][2],
       'Should set movie title')
   end
 
@@ -115,11 +115,11 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal(
       params[:movie][:title],
-      json_response['movie']['title'],
+      json_response['movie'][1],
       'Should update movie title')
     assert_equal(
       params[:movie][:description],
-      json_response['movie']['description'],
+      json_response['movie'][2],
       'Should update movie title')
   end
 
@@ -146,8 +146,8 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
   def expected_movies_response(movies)
     movies.map do |movie|
       [
-        movie.id, movie.title, movie.description,
-        movie.avg_rating, movie.category_id, movie.category
+        movie.id, movie.title, movie.description, movie.avg_rating,
+        movie.category_id, movie.category, movie.user_id
       ]
     end
   end

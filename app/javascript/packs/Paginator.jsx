@@ -26,7 +26,7 @@ const Paginator = (props) => {
     return null;
   }
   const total = parseInt(headers['total'])
-  const total_pages = total / PAGE_LIMIT
+  const total_pages = Math.ceil(total / PAGE_LIMIT)
   const first_page = 1
   const prev_page = Math.max(first_page, (current_page - 1))
   const last_page = total_pages
@@ -37,7 +37,11 @@ const Paginator = (props) => {
 
 
   const clickHandler = (event) => {
+
     let page = event.target.getAttribute('page');
+    if(!page){
+      page = event.target.parentElement.getAttribute('page');
+    }
 
     if (searchParams){
       searchParams['page'] = page

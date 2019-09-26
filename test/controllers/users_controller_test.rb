@@ -11,7 +11,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_difference('User.count', 1) do
-      post(signup_url(format: :json), params: params)
+      post(users_url(format: :json), params: params)
       assert_response :success
     end
     assert_equal(
@@ -28,7 +28,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_difference('User.count', 0) do
-      post(signup_url(format: :json), params: params)
+      post(users_url(format: :json), params: params)
       assert_response :unprocessable_entity
     end
     assert_not_nil(
